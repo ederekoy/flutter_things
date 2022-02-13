@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'neuButton.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +32,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _isElevated = false;
+  int neuBtnDurationMS = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       backgroundColor: Colors.grey[300],
       body: Center(
-          child: neuButton()),
+        child: GestureDetector(
+          child: NeuButton(
+              isElevated: _isElevated,
+              btnDrtn: neuBtnDurationMS,
+              btnHeight: 250,
+              btnWidth: 250),
+          onTap: (() {
+            setState(() {
+              _isElevated = !_isElevated;
+            });
+          }),
+        ),
+      ),
     );
   }
 }
